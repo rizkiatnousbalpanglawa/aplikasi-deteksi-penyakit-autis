@@ -1,112 +1,138 @@
-<?php
-
-session_start();
-
-if (!isset($_SESSION['login'])) {
-    header("Location: ../login");
-}
-
-?>
-
+<?php session_start() ?>
+<?php if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit();
+} ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Admin</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../assets/css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="../assets/css/plugins/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="../assets/css/custom.css">
-
-    <!-- Datatable -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
-
-    <!-- koneksi -->
-    <?php include "../config/koneksi.php" ?>
-
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>DET-AUTIS - Admin</title>
+    <link href="../assets/css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <?php include "../config/koneksi.php"; ?>
 </head>
 
-<body>
-
-    <div class="preloader">
-        <div class="loading">
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.php">DET-AUTIS</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button><!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="hidden" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
             </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="logout.php">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Data</div>
+                        <a class="nav-link" href="index.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Users
+                        </a>
+                        <a class="nav-link" href="?page=artikel">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Artikel
+                        </a>
+                        <a class="nav-link" href="?page=gejala">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Gejala
+                        </a>
+                        <a class="nav-link" href="?page=jadwal">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Jadwal
+                        </a>
+                        <a class="nav-link" href="?page=profil">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Profil
+                        </a>
+                        <div class="sb-sidenav-menu-heading">System</div>
+                        <a class="nav-link" href="logout.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    ADMIN
+                </div>
+            </nav>
         </div>
-    </div>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Admin</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li><a href="index.php?page=user"><i class="fa fa-fw fa-users"></i> User</a></li>
-                    <li><a href="index.php?page=penyakit"><i class="fa fa-fw fa-eye-slash"></i> Jenis</a></li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-
-        <div id="page-wrapper">
-
-            <div class="container-fluid">
-
+        <div id="layoutSidenav_content">
+            <main>
                 <?php
                 if (isset($_GET['page'])) {
                     switch ($_GET['page']) {
-                        case 'user':
-                            include "user.php";
+
+                        case 'artikel':
+                            include "Artikel/index.php";
                             break;
-                        case 'penyakit':
-                            include "penyakit.php";
+                        case 'artikel-tambah':
+                            include "Artikel/tambah.php";
                             break;
-                        case 'penyakit-detail':
-                            include "penyakit-detail.php";
+                        case 'artikel-ubah':
+                            include "Artikel/ubah.php";
                             break;
-                        case 'penyakit-ubah':
-                            include "penyakit-ubah.php";
+                        case 'artikel-hapus':
+                            include "Artikel/hapus.php";
                             break;
-                        case 'user-riwayat':
-                            include "user-riwayat.php";
+                        case 'gejala':
+                            include "Gejala/index.php";
+                            break;
+                        case 'gejala-tambah':
+                            include "Gejala/tambah.php";
+                            break;
+                        case 'gejala-ubah':
+                            include "Gejala/ubah.php";
+                            break;
+                        case 'gejala-hapus':
+                            include "Gejala/hapus.php";
+                            break;
+                        case 'jadwal':
+                            include "Jadwal/index.php";
+                            break;
+                        case 'jadwal-tambah':
+                            include "Jadwal/tambah.php";
+                            break;
+                        case 'jadwal-ubah':
+                            include "Jadwal/ubah.php";
+                            break;
+                        case 'jadwal-hapus':
+                            include "Jadwal/hapus.php";
+                            break;
+                        case 'profil':
+                            include "Profil/index.php";
+                            break;
+                        case 'profil-tambah':
+                            include "Profil/tambah.php";
+                            break;
+                        case 'profil-ubah':
+                            include "Profil/ubah.php";
+                            break;
+                        case 'profil-hapus':
+                            include "Profil/hapus.php";
+                            break;
+
+                        case 'users':
+                            include "Users/index.php";
                             break;
 
                         default:
@@ -114,47 +140,29 @@ if (!isset($_SESSION['login'])) {
                             break;
                     }
                 } else {
-                    include "user.php";
+                    include "Users/index.php";
                 }
                 ?>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-center small">
+                        <div class="text-muted">Copyright &copy; DETEKSI AUTIS 2020</div>
 
-            </div><!-- /.container-fluid -->
-
-        </div><!-- /#page-wrapper -->
-
-    </div><!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="../assets/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../assets/js/bootstrap.min.js"></script>
-
-    <!-- datatable -->
-    <!--  <script type="text/javascript" charset="utf8" src="css/jquery.dataTables.min.js"></script> -->
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#tabelid').DataTable();
-        });
-    </script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="../assets/js/plugins/morris/raphael.min.js"></script>
-    <script src="../assets/js/plugins/morris/morris.min.js"></script>
-    <script src="../assets/js/plugins/morris/morris-data.js"></script>
-
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script>
-        $(window).load(function() {
-            $(".preloader").fadeOut();
-        })
-    </script>
-
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="../assets/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="../assets/demo/chart-area-demo.js"></script>
+    <script src="../assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="../assets/demo/datatables-demo.js"></script>
 </body>
 
 </html>

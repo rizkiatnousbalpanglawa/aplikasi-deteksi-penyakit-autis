@@ -1,3 +1,3 @@
 <?php
-
-$koneksi = new mysqli("localhost","root","","deteksi_autis");
+    $koneksi = new mysqli("localhost","root","","deteksi_autis");
+?>

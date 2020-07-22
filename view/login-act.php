@@ -18,5 +18,5 @@ if (isset($_POST['login'])) {
         echo "<script>location='login.php'</script>";
     }
 }elseif (isset($_POST['daftar'])) {
-    echo "<script>location='register.php'</script>";
+    echo "<script>location='register/register.php'</script>";
 }
