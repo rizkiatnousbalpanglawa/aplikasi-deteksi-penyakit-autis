@@ -15,11 +15,11 @@
 
                     <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="customRadioInline1<?= $set['id'] ?>" name="jawaban_<?= $set['id'] ?>" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline1<?= $set['id'] ?>">Ya<?= $set['id'] ?></label>
+                        <label class="custom-control-label" for="customRadioInline1<?= $set['id'] ?>">Ya</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="customRadioInline2<?= $set['id'] ?>" name="jawaban_<?= $set['id'] ?>" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline2<?= $set['id'] ?>">Tidak<?= $set['id'] ?></label>
+                        <label class="custom-control-label" for="customRadioInline2<?= $set['id'] ?>">Tidak</label>
                     </div>
 
                 </div>
