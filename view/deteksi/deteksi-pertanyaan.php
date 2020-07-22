@@ -14,12 +14,12 @@
                     <input type="hidden" name="id_<?= $set['id'] ?>" value="<?= $set['id'] ?>">
 
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline1" name="jawaban_<?= $set['id'] ?>" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline1">Ya</label>
+                        <input type="radio" id="customRadioInline1<?= $set['id'] ?>" name="jawaban_<?= $set['id'] ?>" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline1<?= $set['id'] ?>">Ya<?= $set['id'] ?></label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline2" name="jawaban_<?= $set['id'] ?>" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline2">Tidak</label>
+                        <input type="radio" id="customRadioInline2<?= $set['id'] ?>" name="jawaban_<?= $set['id'] ?>" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline2<?= $set['id'] ?>">Tidak<?= $set['id'] ?></label>
                     </div>
 
                 </div>

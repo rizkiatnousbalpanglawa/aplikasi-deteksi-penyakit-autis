@@ -16,12 +16,12 @@ if (isset($_POST['login'])) {
     $cek = $koneksi->query("SELECT * FROM user WHERE nama_user='$nama' AND kata_sandi='$katasandi'");
 
     if (mysqli_num_rows($cek) === 1) {
-        echo "<script>alert('Username dan Katasandi sudah ada');location='login.php'</script>";
+        echo "<script>alert('Username dan Katasandi sudah ada');location='../login.php'</script>";
     } else {
         $simpan = $koneksi->query("INSERT INTO `user`(`nama_user`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `kata_sandi`) VALUES ('$nama','$tempatLahir', '$tlahir','$jenisKelamin','$alamat','$katasandi')");
 
         if ($simpan) {
-            echo "<script>location='login.php'</script>";
+            echo "<script>location='../login.php'</script>";
         } else {
             echo $koneksi->error;
         }
