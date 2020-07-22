@@ -21,12 +21,11 @@
             </div>
         </div>
     </div>
-    <nav class="navbar text-dark shadow-sm bg-biru">
-        <span class="navbar-brand mb-0 h1 mx-auto">Login</span>
-    </nav>
+    <h3 class="m-2"> <i class="fa fa-th-list"></i> Login</h3>
+        <hr class="mt-0 mx-2 bg-biru">
 
     <div class="text-center">
-        <i class="fa fa-unlock-alt fa-5x mt-5"></i>
+        <i class="fa fa-unlock-alt fa-5x mt-4"></i>
     </div>
 
     <div class="container">
@@ -43,7 +42,7 @@
                 <input type="password" class="form-control rounded-0" name="katasandi" placeholder="katasandi">
             </div>
             <div class="form-group text-center">
-                <button class="btn rounded-0 btn-block bg-biru" name="login"> <i class="fa fa-sign-in"></i>
+                <button class="btn rounded-0 btn-block bg-biru text-putih" name="login"> <i class="fa fa-sign-in"></i>
                     LOGIN</button>
                 <button class="btn bg-kuning rounded-0 btn-block" name="daftar"> <i class="fa fa-pencil-square-o"></i>
                     DAFTAR</button>

@@ -7,7 +7,7 @@
             <h4 class="text-center">Deteksi Autisme Pada Anak</h4><br>
             <p class="text-center">Jawablah semua pertanyaan sesuai dengan gejala yang dialami oleh anak!</p>
             <br>
-            <a href="index.php?page=deteksi-pertanyaan" class="btn bg-pink btn-block rounded-0"><i class="fa fa-stethoscope"></i> Mulai</a>
+            <a href="index.php?page=deteksi-pertanyaan" class="btn bg-biru text-putih btn-block rounded-0"><i class="fa fa-stethoscope"></i> Mulai</a>
         </div>
     </div>
 </div>

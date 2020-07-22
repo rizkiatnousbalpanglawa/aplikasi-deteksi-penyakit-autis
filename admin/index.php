@@ -134,6 +134,9 @@
                         case 'users':
                             include "Users/index.php";
                             break;
+                        case 'users-hapus':
+                            include "Users/hapus.php";
+                            break;
 
                         default:
                             # code...

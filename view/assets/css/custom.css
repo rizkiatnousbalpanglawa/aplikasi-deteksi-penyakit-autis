@@ -3,23 +3,27 @@
 }
 
 .bg-biru{
-    background-color: #79e2dd !important;
+    background-color: #182f53 !important;
 }
 
 .bg-kuning{
-    background-color: #f4e1a6 !important;
+    background-color: #f9eee2 !important;
 }
 
 .bg-pink{
     background-color: #ffc5c9 !important;
 }
 
+.bg-rose{
+    background-color: #f57a4d !important;
+}
+
 .text-putih{
-    color: #f7f7f7 !important;
+    color: #f9eee2 !important;
 }
 
 .text-biru{
-    color: #79e2dd !important;
+    color: #182f53 !important;
 }
 
 .text-kuning{

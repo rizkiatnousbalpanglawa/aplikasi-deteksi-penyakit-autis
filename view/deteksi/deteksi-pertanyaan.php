@@ -27,7 +27,7 @@
         <?php endwhile ?>
         <br>
         <div class="form-group">
-            <button class="btn bg-pink btn-block rounded-0 shadow" name="simpan"><i class="fa fa-stethoscope"></i> SIMPAN</button>
+            <button class="btn bg-biru text-putih btn-block rounded-0 shadow" name="simpan"><i class="fa fa-stethoscope"></i> SIMPAN</button>
         </div>
     </form>
 

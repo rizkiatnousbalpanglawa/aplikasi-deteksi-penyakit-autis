@@ -66,24 +66,24 @@ if (!isset($_SESSION['nama'])) {
 
     <br><br><br>
     <!-- header -->
-    <nav class="navbar fixed-bottom bg-pink text-center">
+    <nav class="navbar fixed-bottom bg-biru  text-center">
         <div class="col-3 ">
-            <a class="text-dark text-decoration-none" href="index.php?page=deteksi"><i class="fa fa-search-plus"></i>
+            <a class="text-putih text-decoration-none" href="index.php?page=deteksi"><i class="fa fa-search-plus"></i>
                 <div class="h6 mb-0">Deteksi</div>
             </a>
         </div>
         <div class="col-3 ">
-            <a class="text-dark text-decoration-none" href="index.php?page=artikel"><i class="fa fa-files-o"></i>
+            <a class="text-putih text-decoration-none" href="index.php?page=artikel"><i class="fa fa-files-o"></i>
                 <div class="h6 mb-0">Artikel</div>
             </a>
         </div>
         <div class="col-3 ">
-            <a class="text-dark text-decoration-none" href="index.php?page=about"><i class="fa fa-hospital-o"></i>
+            <a class="text-putih text-decoration-none" href="index.php?page=about"><i class="fa fa-hospital-o"></i>
                 <div class="h6 mb-0">About</div>
             </a>
         </div>
         <div class="col-3 ">
-            <a class="text-dark text-decoration-none" href="index.php?page=akun"><i class="fa fa-users"></i>
+            <a class="text-putih text-decoration-none" href="index.php?page=akun"><i class="fa fa-users"></i>
                 <div class="h6 mb-0">Akun</div>
             </a>
         </div>
