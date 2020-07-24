@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <button class="btn bg-biru btn-block rounded-0" name="daftar"><i class="fa fa-pencil-square-o"></i> Daftar</button>
+            <button class="btn bg-biru text-putih btn-block rounded-0" name="daftar"><i class="fa fa-pencil-square-o"></i> Daftar</button>
             <a href="../login.php" class="btn bg-pink btn-block rounded-0" name="login"><i class="fa fa-sign-in"></i> Login</a>
         </form>
     </div>
