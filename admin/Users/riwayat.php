@@ -1,7 +1,15 @@
+<?php $id = $_GET['id'] ?>
+<?php $getriwayat = $koneksi->query("SELECT * FROM tbl_hasil_diagnosa WHERE id_user = '$id' ORDER BY id DESC"); ?>
+<?php $getuser = $koneksi->query("SELECT * FROM user WHERE id_user = '$id'"); ?>
+<?php $datauser = $getuser->fetch_assoc(); ?>
+
 <div class="container-fluid">
-    <h1 class="mt-4">User</h1>
+    <h1 class="mt-4">Riwayat Users</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">User</li>
+        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item">Riwayat Users</li>
+        <li class="breadcrumb-item active"><?= $datauser['nama_user'] ?></li>
+
     </ol>
 
     <!-- Menampilkan Notifikasi Jika Ada -->
@@ -24,31 +32,17 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Tanggal Lahir</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Alamat</th>
-                            <th>#</th>
+                            <th>Tanggal</th>
+                            <th>Presentase Hasil</th>
+                          
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $getUsers = $koneksi->query("SELECT * FROM user") ?>
-                        <?php $no = 1;
-                        while ($dataUsers = $getUsers->fetch_assoc()) :
-                            $jenis_kelamin = ($dataUsers['jenis_kelamin'] == 1) ? "Laki - laki" : "Perempuan";
-                        ?>
+                        <?php $no = 1; while ($datariwayat = $getriwayat->fetch_assoc()) : ?>
                             <tr>
                                 <td><?= $no ?></td>
-                                <td><?= $dataUsers['nama_user'] ?></td>
-                                <td><?= $dataUsers['tempat_lahir'] ?>, <?= date("d M Y", strtotime("tanggal_lahir")) ?></td>
-                                <td><?= $jenis_kelamin ?></td>
-                                <td><?= $dataUsers['alamat'] ?></td>
-
-                                <td>
-                                    <a href="index.php?page=users-riwayat&id=<?= $dataUsers['id_user'] ?>" class="btn btn-primary">Riwayat</a>
-                                    <a href="index.php?page=users-hapus&id=<?= $dataUsers['id_user'] ?>" class="btn btn-danger" onclick="return confirm('Hapus Data?')">Hapus</a>
-
-                                </td>
+                                <td><?= date("d M Y", strtotime($datariwayat['tanggal'])) ?></td>
+                                <td><?= $datariwayat['presentase_hasil'] ?> %</td>
                             </tr>
                         <?php $no++;
                         endwhile ?>

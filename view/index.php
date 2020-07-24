@@ -47,6 +47,9 @@ if (!isset($_SESSION['nama'])) {
             case 'deteksi-pertanyaan':
                 include "deteksi/deteksi-pertanyaan.php";
                 break;
+            case 'deteksi-hasil':
+                include "deteksi/deteksi-hasil.php";
+                break;
             case 'artikel':
                 include "artikel/artikel.php";
                 break;

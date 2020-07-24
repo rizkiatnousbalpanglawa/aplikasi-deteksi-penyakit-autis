@@ -37,7 +37,7 @@
             </div>
         </div>
         <!-- <button class="btn bg-biru btn-block rounded-0"><i class="fa fa-pencil-square-o"></i> Ubah</button> -->
-        <button class="btn bg-pink btn-block rounded-0" name="keluar"><i class="fa fa-history"></i> Riwayat</button>
+        <a href="index.php?page=riwayat" class="btn btn-block rounded-0 btn-primary"><i class="fa fa-history"></i> Riwayat</a>
         <button class="btn bg-pink btn-block rounded-0" name="keluar"><i class="fa fa-sign-out"></i> Logout</button>
     </form>
 </div>

@@ -1,18 +1,22 @@
-<?php $id_user = $_SESSION['id'] ?>
+<?php $iduser = $_SESSION['id'] ?>
+<?php $gethasildiagnosa = $koneksi->query("SELECT * FROM tbl_hasil_diagnosa WHERE id_user = '$iduser' ORDER BY id DESC") ?>
+
 <div class="container">
-    <h3 class="mt-2"> <i class="fa fa-files-o"></i> Riwayat</h3>
+    <h3 class="mt-2"> <i class="fa fa-history"></i> Riwayat</h3>
     <hr class="mt-0 bg-biru">
 
-    <?php $get = $koneksi->query("SELECT * FROM hasil_pemeriksaan WHERE id_user = '$id_user'") ?>
-    <?php while ($set = $get->fetch_assoc()) : ?>
-        <?php $id_hasil_pemeriksaan = $set['kode_test'] ?>
-        <div class="card shadow mb-2">
-            <div class="card-body">
-                <div class="text-center h4"><?= date("d M Y", strtotime($set['tanggal_test'])) ?></div>
-                <br>
-                <a href="riwayat-lihat.php?id=<?= $id_hasil_pemeriksaan ?>" class="btn bg-biru btn-block rounded-0"><i class="fa fa-search"></i> Lihat</a>
-                <a href="riwayat-hapus.php?id=<?= $id_hasil_pemeriksaan ?>" class="btn bg-pink btn-block rounded-0"><i class="fa fa-times"></i> Hapus</a>
+    <?php while($datadiagnosa = $gethasildiagnosa->fetch_assoc()): ?>
+    <div class="card shadow mb-3 rounded-0">
+        <div class="card-body">
+            <div class="text-uppercase">
+                <?= date("d F Y",strtotime($datadiagnosa['tanggal'])) ?>
             </div>
+            <div class="text-center h2 text-biru font-weight-bold">
+                <?= $datadiagnosa['presentase_hasil'] ?> %
+            </div>
+           
         </div>
+    </div>
     <?php endwhile ?>
+
 </div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jul 24, 2020 at 02:43 PM
--- Server version: 10.2.32-MariaDB-cll-lve
--- PHP Version: 7.3.6
+-- Host: localhost
+-- Generation Time: Jul 24, 2020 at 12:29 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tugc5625_deteksi_autisme`
+-- Database: `deteksi_autis`
 --
 
 -- --------------------------------------------------------
@@ -87,46 +87,6 @@ INSERT INTO `gejala` (`id`, `nama_gejala`, `jawaban`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hasil_pemeriksaan`
---
-
-CREATE TABLE `hasil_pemeriksaan` (
-  `id_pemeriksaan` int(11) NOT NULL,
-  `kode_test` varchar(100) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `tanggal_test` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hasil_sementara`
---
-
-CREATE TABLE `hasil_sementara` (
-  `id_hasil_sementara` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_penyakit` int(11) NOT NULL,
-  `jawaban` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hasil_test`
---
-
-CREATE TABLE `hasil_test` (
-  `id_hasil` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_penyakit` int(11) NOT NULL,
-  `kode_test` varchar(100) NOT NULL,
-  `presentase_hasil` decimal(4,1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `jadwal`
 --
 
@@ -167,15 +127,39 @@ INSERT INTO `profil` (`id`, `menu`, `content`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sementara`
+-- Table structure for table `tbl_diagnosa`
 --
 
-CREATE TABLE `sementara` (
-  `id_sementara` int(11) NOT NULL,
+CREATE TABLE `tbl_diagnosa` (
+  `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_pertanyaan` int(11) NOT NULL,
-  `jawaban_user` int(11) NOT NULL
+  `id_gejala` int(11) NOT NULL,
+  `jawaban` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_hasil_diagnosa`
+--
+
+CREATE TABLE `tbl_hasil_diagnosa` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `kode_diagnosa` varchar(56) NOT NULL,
+  `presentase_hasil` decimal(4,2) DEFAULT NULL,
+  `tanggal` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_hasil_diagnosa`
+--
+
+INSERT INTO `tbl_hasil_diagnosa` (`id`, `id_user`, `kode_diagnosa`, `presentase_hasil`, `tanggal`) VALUES
+(1, 3, '24Jul2020114911', '93.75', '2020-07-24'),
+(2, 3, '24072020114944', '0.00', '2020-07-24'),
+(3, 3, '20202407115318', '87.50', '2020-07-24'),
+(4, 3, '20202407115345', '75.00', '2020-07-24');
 
 -- --------------------------------------------------------
 
@@ -223,24 +207,6 @@ ALTER TABLE `gejala`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `hasil_pemeriksaan`
---
-ALTER TABLE `hasil_pemeriksaan`
-  ADD PRIMARY KEY (`id_pemeriksaan`);
-
---
--- Indexes for table `hasil_sementara`
---
-ALTER TABLE `hasil_sementara`
-  ADD PRIMARY KEY (`id_hasil_sementara`);
-
---
--- Indexes for table `hasil_test`
---
-ALTER TABLE `hasil_test`
-  ADD PRIMARY KEY (`id_hasil`);
-
---
 -- Indexes for table `jadwal`
 --
 ALTER TABLE `jadwal`
@@ -253,10 +219,16 @@ ALTER TABLE `profil`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `sementara`
+-- Indexes for table `tbl_diagnosa`
 --
-ALTER TABLE `sementara`
-  ADD PRIMARY KEY (`id_sementara`);
+ALTER TABLE `tbl_diagnosa`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_hasil_diagnosa`
+--
+ALTER TABLE `tbl_hasil_diagnosa`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -287,24 +259,6 @@ ALTER TABLE `gejala`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
--- AUTO_INCREMENT for table `hasil_pemeriksaan`
---
-ALTER TABLE `hasil_pemeriksaan`
-  MODIFY `id_pemeriksaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `hasil_sementara`
---
-ALTER TABLE `hasil_sementara`
-  MODIFY `id_hasil_sementara` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=934;
-
---
--- AUTO_INCREMENT for table `hasil_test`
---
-ALTER TABLE `hasil_test`
-  MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
-
---
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
@@ -317,10 +271,16 @@ ALTER TABLE `profil`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `sementara`
+-- AUTO_INCREMENT for table `tbl_diagnosa`
 --
-ALTER TABLE `sementara`
-  MODIFY `id_sementara` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=981;
+ALTER TABLE `tbl_diagnosa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+
+--
+-- AUTO_INCREMENT for table `tbl_hasil_diagnosa`
+--
+ALTER TABLE `tbl_hasil_diagnosa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
